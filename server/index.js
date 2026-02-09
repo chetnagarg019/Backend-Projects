@@ -31,13 +31,28 @@ app.get("/notes",(req,res) => {
 app.delete("/notes/:index",(req,res) => {
 
     const index = req.params.index;
-    delete notes [index]
+    // delete notes [index] => null rerurn
+    notes.splice(index, 1)
     res.status(200).json({
         message : "note deleted successfully"
     })
 })
 
 // : colon likhne se hota kya hai ki express ko pta chlta jata hai ki ye chiz tumahri dynamic rhegi esliye colon ka use kiya jata hai 
+//jo bhi note humene delet kiya hai uski jagah null likha hua aa jata hai 
+
+//update krne ke liye 
+app.patch("/notes/:index",(req,res) => {
+
+    const index = req.params.index;
+    const description = req.body.description
+
+    notes[index].description = description;
+    res.status(200).json({
+        message : "note updated successfully"
+    })
+})
+
 
 
 
