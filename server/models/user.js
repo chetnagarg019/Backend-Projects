@@ -1,25 +1,20 @@
-// User ka structure define karna 
+// User ka structure define karna
 import mongoose from "mongoose";
 
 const userSchema = new mongoose.Schema(
   {
-    name: {
+    title: {
       type: String,
       required: true,
     },
-    email: {
-      type: String,
-      required: true,
-      unique: true,
-    },
-    password: {
+    description: {
       type: String,
       required: true,
     },
   },
   {
-    timestamps: true,  // createdAt & updatedAt automatically add ho jayenge
-  }
+    timestamps: true, // createdAt & updatedAt automatically add ho jayenge
+  },
 );
 
 const User = mongoose.model("User", userSchema);
